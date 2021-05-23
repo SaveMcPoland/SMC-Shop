@@ -1,0 +1,5 @@
+name: SMC-Shop
+version: ${project.version}
+main: pl.savemc.shop.SMCShop
+api-version: 1.16
+authors: [ minemis, Rollczi ]
