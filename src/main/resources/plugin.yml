@@ -3,3 +3,4 @@ version: ${project.version}
 main: pl.savemc.shop.SMCShop
 api-version: 1.16
 authors: [ minemis, Rollczi ]
+website: https://github.com/SaveMcPoland
