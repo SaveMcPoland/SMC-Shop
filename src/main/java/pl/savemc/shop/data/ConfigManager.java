@@ -39,7 +39,8 @@ public class ConfigManager {
             saveConfig();
             logger.info("POLAND WITH CHICKEN SOUP");
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -48,13 +49,18 @@ public class ConfigManager {
         pluginConfig = cdn.load(physicalFile, Config.class);
     }
 
-    public void saveConfig() throws IOException {
+    public void saveConfig() {
         if (pluginConfig == null) {
             logger.severe("Cannot save or overwrite the contents of config.yml (Instance config is null)");
             return;
         }
 
-        FileUtils.overrideFile(physicalFile, cdn.render(pluginConfig));
+        try {
+            FileUtils.overrideFile(physicalFile, cdn.render(pluginConfig));
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public Config getPluginConfig() {
