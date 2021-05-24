@@ -22,11 +22,7 @@ public final class SMCShop extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        try {
-            this.configManager.saveConfig();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
+        this.configManager.saveConfig();
     }
 
     public Config getPluginConfig() {
