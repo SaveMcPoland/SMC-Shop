@@ -7,13 +7,13 @@ public class CommandData {
     private final int id;
     private final String name;
     private final CommandExecutor commandExecutor;
-    private final List<String> alias;
+    private final List<String> aliases;
 
-    public CommandData(int id, String name, CommandExecutor commandExecutor, List<String> alias) {
+    public CommandData(int id, String name, CommandExecutor commandExecutor, List<String> aliases) {
         this.id = id;
         this.name = name;
         this.commandExecutor = commandExecutor;
-        this.alias = alias;
+        this.aliases = aliases;
     }
 
     public int getId() {
@@ -24,8 +24,8 @@ public class CommandData {
         return commandExecutor;
     }
 
-    public List<String> getAlias() {
-        return alias;
+    public List<String> getAliases() {
+        return aliases;
     }
 
     public String getName() {
