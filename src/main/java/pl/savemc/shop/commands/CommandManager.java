@@ -27,11 +27,10 @@ public class CommandManager {
 
             if (knownCommands.containsKey(name)) {
                 knownCommands.replace(name, commandInstance);
-
                 continue;
             }
 
-            commandMap.register(name, commandInstance);
+            commandMap.register(name, "smc-shop", commandInstance);
         }
     }
 
