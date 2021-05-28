@@ -4,11 +4,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class GuiData {
     private final String name;
-    private final ClickExecutor clickExecutor;
+    private final GuiExecutor guiExecutor;
 
-    public GuiData(String name, ClickExecutor clickExecutor) {
+    public GuiData(String name, GuiExecutor guiExecutor) {
         this.name = name;
-        this.clickExecutor = clickExecutor;
+        this.guiExecutor = guiExecutor;
     }
 
     public String getName() {
@@ -16,6 +16,6 @@ public class GuiData {
     }
 
     public void run(InventoryClickEvent event){
-        clickExecutor.execute(event);
+        guiExecutor.execute(event);
     }
 }
