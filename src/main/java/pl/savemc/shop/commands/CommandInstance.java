@@ -8,22 +8,19 @@ import java.util.List;
 
 public class CommandInstance extends BukkitCommand {
 
-    private final int id;
+    private final Integer id;
     private final CommandManager commandManager;
 
-    protected CommandInstance(int id, @NotNull String name, List<String> aliases, CommandManager commandManager) {
+    protected CommandInstance(Integer id, @NotNull String name, @NotNull List<String> aliases, CommandManager commandManager) {
         super(name, "", "/" + name, aliases);
         this.id = id;
+        aliases.forEach(System.out::println);
         this.commandManager = commandManager;
     }
 
     @Override
     public boolean execute(@NotNull CommandSender sender, @NotNull String label, @NotNull String[] args) {
         commandManager.runCommand(id, sender, label, args);
-        return true;
-    }
-
-    public int getId() {
-        return id;
+        return false;
     }
 }
