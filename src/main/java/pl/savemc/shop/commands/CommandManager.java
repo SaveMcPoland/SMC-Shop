@@ -4,61 +4,53 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
-import pl.savemc.shop.commands.command.ShopCommand;
-import pl.savemc.shop.commands.command.TestCommand;
+import pl.savemc.shop.commands.executors.CommandExecutor;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CommandManager {
 
-    private final ArrayList<CommandData> commandDataList = new ArrayList<>();
+    private final Map<Integer, CommandData> commandDataMap = new HashMap<>();
     private final CommandMap commandMap = Bukkit.getCommandMap();
     private final Map<String, Command> knownCommands = commandMap.getKnownCommands();
+    private final String fallbackPrefix;
 
-    public CommandManager() {
-        add(0, "sklep", new ShopCommand(), Arrays.asList("sklep", "kupsedirta"))                                                                                    ;
-        add(1, "test",  new TestCommand(), Collections.emptyList());
-    }
-
-    public void registerCommands() {
-        for (CommandData commandData : commandDataList) {
-            String name = commandData.getName();
-            CommandInstance commandInstance = new CommandInstance(commandData.getId(), name, commandData.getAliases(), this);
-
-            if (knownCommands.containsKey(name)) {
-                knownCommands.replace(name, commandInstance);
-
-                continue;
-            }
-
-            commandMap.register(name, commandInstance);
-        }
+    public CommandManager(String fallbackPrefix) {
+        this.fallbackPrefix = fallbackPrefix;
     }
 
     public void unregisterCommands() {
-        for (CommandData commandData : commandDataList) {
+        for (CommandData commandData : commandDataMap.values()) {
             knownCommands.remove(commandData.getName());
 
             List<String> aliases = commandData.getAliases();
+
             for (String alias : aliases) {
                 knownCommands.remove(alias);
             }
         }
     }
 
-    public void runCommand(int id, CommandSender sender, String label, String[] args) {
-        for (CommandData commandData : commandDataList) {
-            if (commandData.getId() != id) {
-                continue;
-            }
-
-            commandData.getCommandExecutor().execute(sender, label, args);
-        }
+    public void runCommand(Integer id, CommandSender sender, String label, String[] args) {
+        commandDataMap.get(id).getCommandExecutor().execute(sender, label, args);
     }
 
-    private void add(int id, String name, CommandExecutor commandExecutor, List<String> list) {
-        commandDataList.add(new CommandData(id, name, commandExecutor, list));
+    public void register(Integer id, CommandExecutor executor, String name, String... aliasesTab) {
+        List<String> aliases = Arrays.asList(aliasesTab);
+
+        commandDataMap.put(id, new CommandData(executor, id, name, aliases));
+
+        CommandInstance commandInstance = new CommandInstance(id, name, aliases, this);
+
+        if (knownCommands.containsKey(name)) {
+            knownCommands.remove(name);
+            aliases.forEach(knownCommands::remove);
+        }
+
+        commandMap.register(name, fallbackPrefix, commandInstance);
     }
 
 }
-
