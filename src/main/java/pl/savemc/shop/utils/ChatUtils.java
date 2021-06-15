@@ -1,8 +1,6 @@
 package pl.savemc.shop.utils;
 
-
 import net.md_5.bungee.api.ChatColor;
-
 import java.awt.*;
 import java.util.List;
 
