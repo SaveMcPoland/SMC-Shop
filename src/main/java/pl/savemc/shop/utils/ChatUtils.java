@@ -1,6 +1,7 @@
 package pl.savemc.shop.utils;
 
-import org.bukkit.ChatColor;
+
+import net.md_5.bungee.api.ChatColor;
 
 import java.awt.*;
 import java.util.List;
@@ -58,19 +59,13 @@ public class ChatUtils {
         int g = color.getGreen();
         int b = color.getBlue();
 
-        System.out.println(r + " " + g + " " + b);
-
         int r2 = color2.getRed();
         int g2 = color2.getGreen();
         int b2 = color2.getBlue();
 
-        System.out.println(r2 + " " + g2 + " " + b2);
-
         int redDivider = getDivider(r, r2, length);
         int greenDivider = getDivider(g, g2, length);
         int blueDivider = getDivider(b, b2, length);
-
-        System.out.println(redDivider + " " + greenDivider + " " + blueDivider);
 
         int index = 0;
 

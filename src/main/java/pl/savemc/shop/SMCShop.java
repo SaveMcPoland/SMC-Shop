@@ -45,5 +45,4 @@ public final class SMCShop extends JavaPlugin {
     public GuiManager getGuiManager() {
         return guiManager;
     }
-
 }
