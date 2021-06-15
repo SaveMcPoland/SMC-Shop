@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class GuiBuilder implements InventoryHolder {
 
     private final InventoryHolder holder;
-    private  final int size;
+    private final int size;
     private Inventory inventory;
 
     public GuiBuilder(InventoryHolder holder, int rows, String title){
