@@ -21,8 +21,7 @@ public class ChatUtils {
         return text;
     }
 
-
-    public static String gradient(String content, java.awt.Color... colors){
+    public static String gradient(String content, Color... colors){
         StringBuilder result = new StringBuilder();
 
         double divisions = colors.length - 1.0D;
@@ -42,14 +41,13 @@ public class ChatUtils {
         return result.toString();
     }
 
-    private static String gradientTwoColors(String content, java.awt.Color color, java.awt.Color color2) {
+    private static String gradientTwoColors(String content, Color color, Color color2) {
 
-        char[] chars = content.toCharArray();
         int length = content.length();
         StringBuilder result = new StringBuilder();
 
         if (length == 1) {
-            result.append(net.md_5.bungee.api.ChatColor.of(color)).append(content);
+            result.append(ChatColor.of(color)).append(content);
             return result.toString();
         }
 
@@ -67,7 +65,7 @@ public class ChatUtils {
 
         int index = 0;
 
-        for (char c : chars) {
+        for (char c : content.toCharArray()) {
             result.append(net.md_5.bungee.api.ChatColor.of(new Color(
                     r - index * redDivider,
                     g - index * greenDivider,
@@ -82,4 +80,5 @@ public class ChatUtils {
     private static int getDivider(int color1Strength, int color2Strength, int length) {
         return (color1Strength - color2Strength) / (length - 1);
     }
+
 }
