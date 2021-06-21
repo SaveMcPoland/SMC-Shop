@@ -1,20 +1,14 @@
 package pl.savemc.shop.listeners;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-import pl.savemc.shop.gui.GuiManager;
 import pl.savemc.shop.gui.holders.SMCInventoryHolder;
 
 public class InventoryClick implements Listener {
-
-    private final GuiManager guiManager;
-
-    public InventoryClick(GuiManager guiManager) {
-        this.guiManager = guiManager;
-    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -25,12 +19,11 @@ public class InventoryClick implements Listener {
             return;
         }
 
-
         event.setCancelled(true);
 
         SMCInventoryHolder holder = (SMCInventoryHolder) standardHolder;
 
-        guiManager.runClick(holder.getId(), event);
-
+        holder.run(event.getSlot(), (Player) event.getWhoClicked());
     }
+
 }
