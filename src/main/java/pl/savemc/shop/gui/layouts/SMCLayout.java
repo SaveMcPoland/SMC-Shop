@@ -9,7 +9,7 @@ import pl.savemc.shop.utils.builders.ItemBuilder;
 
 import java.util.List;
 
-public class SMCLayout{
+public class SMCLayout {
 
     private final GuiBuilder builder;
     private final SMCInventoryHolder holder;

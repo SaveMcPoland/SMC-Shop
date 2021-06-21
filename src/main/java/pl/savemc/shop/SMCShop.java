@@ -29,7 +29,7 @@ public final class SMCShop extends JavaPlugin {
         this.commandManager.register(1, new TestCommand(), "test");
 
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new InventoryClick(guiManager), this);
+        pm.registerEvents(new InventoryClick(), this);
     }
 
     @Override

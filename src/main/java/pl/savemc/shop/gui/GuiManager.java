@@ -1,7 +1,9 @@
 package pl.savemc.shop.gui;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.scheduler.BukkitRunnable;
 import pl.savemc.shop.gui.layouts.LayoutRunnable;
 import pl.savemc.shop.gui.layouts.SMCLayout;
 
@@ -16,7 +18,7 @@ public class GuiManager {
 
     public GuiManager() {
 
-        LayoutRunnable shopMenuRunnable = () -> {
+        guiMap.put(GuiID.SHOP_MENU,  () -> {
             SMCLayout shopMenu = new SMCLayout("&eSaveMC sklep", 3);
 
             shopMenu.fill(Material.BLACK_STAINED_GLASS_PANE, " ");
@@ -29,12 +31,9 @@ public class GuiManager {
             //() -> );
 
             return shopMenu.createGui();
-        };
+        });
 
-        guiMap.put(GuiID.SHOP_MENU, shopMenuRunnable);
-
-
-        LayoutRunnable shopRunnable = () -> {
+        guiMap.put(GuiID.SHOP, () -> {
                 SMCLayout shop = new SMCLayout("&eSklep", 4);
 
                 shop.fill(Material.BLACK_STAINED_GLASS_PANE, " ");
@@ -69,9 +68,8 @@ public class GuiManager {
                         (player) -> player.openInventory(this.getInventory(GuiID.SHOP_MENU)));
 
                 return shop.createGui();
-        };
+        });
 
-        guiMap.put(GuiID.SHOP, shopRunnable);
     }
 
     public Inventory getInventory(GuiID id) {

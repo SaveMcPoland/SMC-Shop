@@ -22,8 +22,9 @@ public class GuiBuilder implements InventoryHolder {
             this.size = 54;
             return;
         }
+
         this.size = rows * 9;
-        inventory = Bukkit.createInventory(holder, size, title);
+        this.inventory = Bukkit.createInventory(holder, size, title);
     }
 
     public void setItem(int position, ItemStack item) {
