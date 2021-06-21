@@ -26,7 +26,7 @@ public class InventoryClick implements Listener {
             return;
         }
 
-        //event.setCancelled(true);
+        event.setCancelled(true);
 
         SMCInventoryHolder holder = (SMCInventoryHolder) standardHolder;
 
