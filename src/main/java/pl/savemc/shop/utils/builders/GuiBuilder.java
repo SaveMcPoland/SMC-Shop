@@ -1,21 +1,12 @@
 package pl.savemc.shop.utils.builders;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 import pl.savemc.shop.gui.ItemRunnable;
 import pl.savemc.shop.gui.holders.SMCInventoryHolder;
-import pl.savemc.shop.utils.ChatUtils;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GuiBuilder implements InventoryHolder {
 
@@ -45,58 +36,12 @@ public class GuiBuilder implements InventoryHolder {
     }
 
     public void fill(ItemBuilder builder) {
-
-
-
-    }
-
-    @Deprecated
-    public void fill(Material material, String name) {
-
-        ItemStack item = new ItemStack(material);
-        ItemMeta meta = item.getItemMeta();
-
-        if (name != null) {
-            meta.setDisplayName(ChatUtils.color(name));
-        }
+        ItemStack item = builder.build();
 
         for (int i = 0; i < size; i++) {
             inventory.setItem(i, item);
         }
 
-    }
-
-    @Deprecated
-    public void setItem(Material material, int position, int amount, String name, ItemRunnable itemRunnable, String... lore) {
-        if (position >= size) {
-            position = size - 1;
-        }
-
-        ItemStack item = new ItemStack(material, amount);
-        ItemMeta meta = item.getItemMeta();
-
-        if (name != null) {
-            meta.setDisplayName(ChatUtils.color(name));
-        }
-
-        if (lore != null && lore.length != 0) {
-            meta.setLore(ChatUtils.color(Arrays.asList(lore)));
-        }
-
-        item.setItemMeta(meta);
-        inventory.setItem(position, item);
-
-        holder.addTask(position, itemRunnable);
-    }
-
-    @Deprecated
-    public void setItem(Material material, int position, int amount) {
-        if (position >= size) {
-            position = size - 1;
-        }
-
-        ItemStack item = new ItemStack(material, amount);
-        inventory.setItem(position, item);
     }
 
     @Override
