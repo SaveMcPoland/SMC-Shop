@@ -1,4 +1,4 @@
-package pl.savemc.shop.gui.clickExecutors;
+package pl.savemc.shop.gui.executors;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 

@@ -29,6 +29,21 @@ public class GuiBuilder implements InventoryHolder {
         inventory = Bukkit.createInventory(holder, size, title);
     }
 
+    public void fill(Material material, String name) {
+
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+
+        if (name != null) {
+            meta.setDisplayName(ChatUtils.color(name));
+        }
+
+        for (int i = 0; i < size; i++) {
+            inventory.setItem(i, item);
+        }
+
+    }
+
     public void setItem(Material material, int position, int amount, String name, String... lore) {
         if (position >= size) {
             position = size - 1;

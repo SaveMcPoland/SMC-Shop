@@ -18,16 +18,8 @@ public class CommandData {
         this.aliases = aliases;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public CommandExecutor getCommandExecutor() {
-        return command;
-    }
-
-    public String getName() {
-        return name;
+        return commandExecutor;
     }
 
     public String getName() {

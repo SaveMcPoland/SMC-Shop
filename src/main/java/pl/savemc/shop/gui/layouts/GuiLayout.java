@@ -1,7 +1,7 @@
-package pl.savemc.shop.gui.creators;
+package pl.savemc.shop.gui.layouts;
 
 import org.bukkit.inventory.Inventory;
 
-public interface GuiCreator {
+public interface GuiLayout {
     Inventory createGui();
 }

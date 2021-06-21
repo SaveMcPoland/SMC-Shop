@@ -2,23 +2,24 @@ package pl.savemc.shop.utils;
 
 import net.md_5.bungee.api.ChatColor;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ChatUtils {
 
     public static String color(String text) {
-        return ChatColor.translateAlternateColorCodes('$', text);
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 
     public static List<String> color(List<String> text) {
-        int index = 0;
+        List<String> colored = new ArrayList<>();
 
         for (String s : text) {
-            text.set(index, ChatColor.translateAlternateColorCodes('$', s));
-            index++;
+            colored.add(color(s));
         }
 
-        return text;
+        return colored;
     }
 
     public static String gradient(String content, Color... colors){

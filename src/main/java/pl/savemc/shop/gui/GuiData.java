@@ -1,14 +1,14 @@
 package pl.savemc.shop.gui;
 
-import pl.savemc.shop.gui.clickExecutors.ClickExecutor;
-import pl.savemc.shop.gui.creators.GuiCreator;
+import pl.savemc.shop.gui.executors.ClickExecutor;
+import pl.savemc.shop.gui.layouts.GuiLayout;
 
 public class GuiData {
-    private final GuiCreator creator;
+    private final GuiLayout layout;
     private final ClickExecutor executor;
 
-    public GuiData(GuiCreator creator, ClickExecutor executor) {
-        this.creator = creator;
+    public GuiData(GuiLayout layout, ClickExecutor executor) {
+        this.layout = layout;
         this.executor = executor;
     }
 
@@ -16,7 +16,7 @@ public class GuiData {
         return executor;
     }
 
-    public GuiCreator getCreator() {
-        return creator;
+    public GuiLayout getLayout() {
+        return layout;
     }
 }
