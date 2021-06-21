@@ -1,9 +1,7 @@
 package pl.savemc.shop.gui;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.scheduler.BukkitRunnable;
 import pl.savemc.shop.gui.layouts.LayoutRunnable;
 import pl.savemc.shop.gui.layouts.SMCLayout;
 

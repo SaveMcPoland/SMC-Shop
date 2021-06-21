@@ -3,7 +3,6 @@ package pl.savemc.shop.utils;
 import net.md_5.bungee.api.ChatColor;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ChatUtils {
