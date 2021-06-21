@@ -41,7 +41,7 @@ public class CommandManager {
     public void register(Integer id, CommandExecutor executor, String name, String... aliasesTab) {
         List<String> aliases = Arrays.asList(aliasesTab);
 
-        commandDataMap.put(id, new CommandData(id, executor, name, aliases));
+        commandDataMap.put(id, new CommandData(executor, name, aliases));
 
         CommandInstance commandInstance = new CommandInstance(id, name, aliases, this);
 
